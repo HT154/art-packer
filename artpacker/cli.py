@@ -1,13 +1,13 @@
 
 import os
-from artpacker import ArtPacker
+from .artpacker import ArtPacker
 from optparse import OptionParser
 
-from metadata.json import JSONMetadataSaver
-from metadata.dummy import DummyMetadataSaver
-from packer.simple import SimplePacker
-from saver.png import PNGSaver
-from saver.jpeg import JPEGSaver
+from .metadata.json import JSONMetadataSaver
+from .metadata.dummy import DummyMetadataSaver
+from .packer.simple import SimplePacker
+from .saver.png import PNGSaver
+from .saver.jpeg import JPEGSaver
 
 AVAILABLE_FORMATS = ('png', 'jpg')
 
@@ -57,7 +57,7 @@ def main():
         dest="input_regex", default=None,
         help="Regular expression for filtering input files")
 
-    names = ", ".join(map(lambda a: "'%s'" % a, AVAILABLE_FORMATS))
+    names = ", ".join(["'%s'" % a for a in AVAILABLE_FORMATS])
     parser.add_option("--output-format",
         dest="output_format", default='png',
         help="Output files format. Should be one of %s" % names)
@@ -79,11 +79,11 @@ def main():
     (options, args) = parser.parse_args()
 
     if not options.input:
-        print "--input-path parameter is required"
+        print("--input-path parameter is required")
         raise SystemExit
 
     if options.output_format not in AVAILABLE_FORMATS:
-        print "--output-format %s is not supported" % options.output_format
+        print("--output-format %s is not supported" % options.output_format)
         raise SystemExit
 
 

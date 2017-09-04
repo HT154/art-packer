@@ -66,6 +66,6 @@ class SimplePacker():
 
     def adjust_max_size(self, images):
         #The largest image must fit the sprite sheet
-        max_width = max(self.max_width, max(map(lambda a: a['width'], images)))
-        max_height = max(self.max_height, max(map(lambda a: a['height'], images)))
+        max_width = max(self.max_width, max([a['width'] for a in images]))
+        max_height = max(self.max_height, max([a['height'] for a in images]))
         return max_width, max_height

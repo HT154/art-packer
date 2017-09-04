@@ -30,4 +30,4 @@ class Saver():
         sprite_sheet.filesize = os.path.getsize(filename)
 
     def save_file(self, image, filename):
-        raise "This method should be overridden in inherited classes"
+        raise NotImplementedError

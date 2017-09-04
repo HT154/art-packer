@@ -3,6 +3,7 @@ import os
 import Image
 import re
 from math import sqrt
+from functools import reduce
 
 class SpriteSheet():
     def __init__(self):
@@ -46,18 +47,18 @@ class ArtPacker():
 
     def generate(self):
         if self.verbose:
-            print "Reading image resources"
+            print("Reading image resources")
 
         images, duplicates = self.read_sprites()
 
         if not images:
             if self.verbose:
-                print "No images was found"
+                print("No images was found")
             raise SystemExit
 
 
         if self.verbose:
-            print "Packing %d images to sprite-sheets" % len(images)
+            print("Packing %d images to sprite-sheets" % len(images))
 
         source_filesize = reduce(lambda total, image: image['filesize'] + total, images, 0)
 
@@ -83,7 +84,7 @@ class ArtPacker():
             metadata.update(sprite_sheet.get_metadata())
             if self.verbose:
                 overhead = 100.0 - (100.0 * sprite_sheet.used_area / sheet_area)
-                print "%s %d images was packed with pixel overhead of %.2f%%" % (sprite_sheet.filename, len(sprite_sheet), overhead)
+                print("%s %d images was packed with pixel overhead of %.2f%%" % (sprite_sheet.filename, len(sprite_sheet), overhead))
 
         for image in duplicates:
             metadata[image['path']] = metadata[image['duplicate_of']]
@@ -91,10 +92,10 @@ class ArtPacker():
         self.metadata_saver.save({'sheets': sprite_sheets, 'sprites': metadata})
         if self.verbose:
             total_overhead = 100.0 - (100.0 * total_used_area / total_sheet_area)
-            print "Done!"
-            print "Total %d images was packed to %d sprite-sheets with pixel overhead of %.2f%%" % (len(metadata), len(sprite_sheets), total_overhead)
-            print "Total size of unpacked resources is %.2f Mb" % (source_filesize / 1024.0 / 1024.0)
-            print "Total size of sprite sheets is %.2f Mb" % (total_filesize / 1024.0 / 1024.0)
+            print("Done!")
+            print("Total %d images was packed to %d sprite-sheets with pixel overhead of %.2f%%" % (len(metadata), len(sprite_sheets), total_overhead))
+            print("Total size of unpacked resources is %.2f Mb" % (source_filesize / 1024.0 / 1024.0))
+            print("Total size of sprite sheets is %.2f Mb" % (total_filesize / 1024.0 / 1024.0))
 
     def read_sprites(self):
         images = []
@@ -108,7 +109,7 @@ class ArtPacker():
 
                 try:
                     image = Image.open(file_path)
-                except Exception, e:
+                except Exception as e:
                     continue
 
                 #Crop by alpha channel if any
