@@ -1,5 +1,5 @@
 
-import ImageFile
+from PIL import ImageFile
 from artpacker.saver import Saver
 
 class JPEGSaver(Saver):

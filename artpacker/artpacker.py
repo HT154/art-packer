@@ -1,6 +1,5 @@
-from PIL import ImageChops
+from PIL import Image, ImageChops
 import os
-import Image
 import re
 from math import sqrt
 from functools import reduce
