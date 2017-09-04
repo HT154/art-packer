@@ -18,20 +18,22 @@ Features:
 Dependencies:
 -------------
 
-pip install pil
+`$ pip install Pillow`
+
+Optionally: `$ pip install simplejson`
 
 Installation:
 -------------
 
 This software works without installation, but if you want just run
 
-sudo python setup.py install
+`$ sudo python setup.py install`
 
 or even 
 
-pip install artpacker
+`$ pip install artpacker`
 
 Usage:
 ------
 
-./bin/art-packer --input-path [path-to-sprites]
+`$ ./bin/art-packer --input-path [path-to-sprites]`
