@@ -11,6 +11,6 @@ setup(name='artpacker',
       packages=['artpacker', 'artpacker.metadata', 'artpacker.packer', 'artpacker.saver'],
       scripts=['bin/art-packer'],
       install_requires=[
-      	'PIL',
+      	'Pillow',
       ],
     )
