@@ -1,4 +1,4 @@
-import ImageChops
+from PIL import ImageChops
 import os
 import Image
 import re
